@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Emart: accesorios y gadgets en Bolivia. Power banks, cargadores, cables, audio y más.">
+<meta name="robots" content="noindex">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font-size:14px}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Emart Tienda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: misma estructura y orden de secciones que la referencia (barra social, anuncio, header con mega-menú, hero en carrusel, Top Picks, categorías, segunda fila, Featured on, reseñas, blog, Why, newsletter, footer). Contenedor 1320px. */
+:root{
+  --brand:#0B3BD1;       /* azul del logo de Emart (aprox., confirmar con el archivo) */
+  --brand-deep:#061F73;  /* azul oscuro para fondos */
+  --lime:#B8F13A;        /* verde lima del logo (aprox.) */
+  --on-lime:#071A52;
+  --bg:#FFFFFF;
+  --surface:#F3F5F9;
+  --fg:#0D1326;
+  --muted:#5D6680;
+  --line:#E1E5EE;
+  --sale:#E5484D;
+  --f-display:"Sora",ui-sans-serif,system-ui,sans-serif;
+  --f-body:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#070B17;--surface:#10172A;--fg:#EAF0FA;--muted:#97A3BC;--line:#1F2942;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#070B17;--surface:#10172A;--fg:#EAF0FA;--muted:#97A3BC;--line:#1F2942;color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:6px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.12;text-wrap:balance;margin:0}
+.wrap{max-width:1320px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.btn{white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:12px 26px;font-weight:700;background:var(--lime);color:var(--on-lime);transition:filter .15s,transform .15s}
+.btn:hover{filter:brightness(1.05);transform:translateY(-1px)}
+.btn.blue{background:var(--brand);color:#fff}
+.btn.line{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px currentColor}
+.sec{padding-block:56px}
+.sec-title{font-size:clamp(26px,3vw,38px);font-weight:700;text-align:center;letter-spacing:-.02em;margin-bottom:32px}
+.ph{font-family:var(--f-mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--bg);border:1px dashed var(--line);border-radius:6px;padding:2px 6px;position:absolute;bottom:8px;right:8px}
+
+/* 1. barra social + prototipo */
+.util{background:var(--brand-deep);color:#C9D4F5;font-size:12px}
+.util .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:6px;flex-wrap:wrap}
+.util .soc{display:flex;gap:14px}
+.util b{color:var(--lime);font-family:var(--f-mono);font-weight:500}
+.util button{background:transparent;border:1px solid #2c4398;border-radius:999px;padding:3px 10px;font-size:12px;color:#fff}
+/* 2. anuncio */
+.announce{background:var(--lime);color:var(--on-lime);text-align:center;font-weight:600;font-size:14px}
+.announce .wrap{padding-block:9px}
+.announce a{text-decoration:underline;margin-left:8px}
+
+/* 3. header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:72px;gap:16px}
+nav.main{display:flex;gap:2px}
+nav.main>div{position:relative}
+nav.main>div>a{display:block;padding:24px 9px;font-weight:600;font-size:14px;white-space:nowrap}
+nav.main>div>a:hover{color:var(--brand)}
+.mega{position:absolute;top:100%;left:0;width:620px;background:var(--bg);border:1px solid var(--line);border-radius:0 0 16px 16px;box-shadow:0 24px 50px -20px rgba(6,31,115,.35);padding:24px;display:none;grid-template-columns:180px 1fr;gap:24px}
+nav.main>div:hover .mega,nav.main>div:focus-within .mega{display:grid}
+.mega h4{margin:0 0 10px;font-size:12px;font-family:var(--f-mono);text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.mega ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:14px}
+.mega .prods{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.mega .prods a{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:center;padding:8px;border-radius:10px}
+.mega .prods a:hover{background:var(--surface)}
+.mega .prods .th{width:52px;height:52px;border-radius:10px;background:var(--surface);display:grid;place-items:center}
+.mega .prods svg{width:80%;height:80%}
+.mega .prods b{display:block;font-size:13px}
+.mega .prods small{color:var(--muted);font-size:12px}
+.logo{justify-self:center;display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:800;font-size:26px;letter-spacing:-.02em}
+.logo .mark{width:36px;height:36px;border-radius:10px;background:var(--brand);display:grid;place-items:center;color:var(--lime);font-size:20px;overflow:hidden}
+.logo .mark img{width:100%;height:100%;object-fit:contain;background:#fff}
+.logo .e{color:var(--brand)}
+.tools{justify-self:end;display:flex;gap:4px}
+.icon-btn{position:relative;width:42px;height:42px;border-radius:999px;border:0;background:transparent;display:grid;place-items:center}
+.icon-btn:hover{background:var(--surface)}
+.badge{position:absolute;top:2px;right:0;min-width:18px;height:18px;border-radius:9px;background:var(--lime);color:var(--on-lime);font-size:11px;font-weight:700;display:grid;place-items:center;padding:0 5px}
+.menu-btn{display:none}
+.searchbar{border-top:1px solid var(--line);background:var(--bg)}
+.searchbar .wrap{padding-block:12px}
+.searchbar input{width:100%;border:1px solid var(--line);border-radius:999px;padding:12px 18px;font:inherit;background:var(--surface);color:var(--fg)}
+@media (max-width:1180px){.menu-btn{display:grid}nav.main{display:none}
+  nav.main.open{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:8px max(16px,env(safe-area-inset-left,0px))}
+  nav.main.open>div>a{padding:12px 0}.mega{display:none!important}
+  .logo{font-size:22px}}
+
+/* 4. hero slideshow */
+.hero{position:relative;background:var(--brand-deep);color:#fff;overflow:hidden}
+.slides{display:grid}
+.slide{grid-area:1/1;display:grid;opacity:0;visibility:hidden;transition:opacity .6s}
+.slide.on{opacity:1;visibility:visible}
+.slide .wrap{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:32px;min-height:clamp(420px,46vw,640px);padding-block:48px;width:100%}
+.slide .bg{grid-area:1/1;pointer-events:none}
+.slide>.wrap{grid-area:1/1;position:relative}
+.s1 .bg{background:radial-gradient(900px 500px at 75% 50%,color-mix(in srgb,var(--lime) 35%,transparent),transparent 60%),linear-gradient(120deg,#030C33,var(--brand-deep) 55%,var(--brand))}
+.s2 .bg{background:radial-gradient(800px 500px at 70% 40%,color-mix(in srgb,var(--brand) 70%,transparent),transparent 60%),#040A24}
+.s3 .bg{background:linear-gradient(120deg,var(--brand),#2A62FF 60%,color-mix(in srgb,var(--lime) 60%,var(--brand)))}
+.s4 .bg{background:radial-gradient(700px 500px at 30% 60%,color-mix(in srgb,var(--lime) 25%,transparent),transparent 60%),#06123F}
+.tagline{display:inline-block;font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;background:var(--lime);color:var(--on-lime);border-radius:6px;padding:4px 10px;margin-bottom:18px}
+.slide h2{font-size:clamp(36px,5.2vw,72px);font-weight:800;letter-spacing:-.03em}
+.slide h2 em{font-style:normal;color:var(--lime)}
+.slide p{color:#C9D4F5;font-size:17px;max-width:44ch;margin:16px 0 28px}
+.slide .art{position:relative;display:grid;place-items:center}
+.slide .art svg{width:min(420px,90%);height:auto;filter:drop-shadow(0 30px 50px rgba(0,0,0,.45));animation:float 6s ease-in-out infinite}
+.slide .art .ph{background:rgba(0,0,0,.35);color:#C9D4F5;border-color:#3a4f9e}
+@keyframes float{50%{transform:translateY(-10px)}}
+.hero-ctrl{position:absolute;left:0;right:0;bottom:22px;display:flex;justify-content:center;gap:10px;align-items:center;z-index:2}
+.dot{width:10px;height:10px;border-radius:999px;border:0;background:rgba(255,255,255,.4);transition:width .3s}
+.dot.on{width:32px;background:var(--lime)}
+.pp{width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;display:grid;place-items:center;margin-left:8px}
+@media (max-width:820px){.slide .wrap{grid-template-columns:1fr;text-align:left;padding-block:36px 70px}.slide .art{order:-1}.slide .art svg{width:min(260px,70%)}}
+
+/* 5/7. carruseles de productos */
+.rail-wrap{position:relative}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3*20px)/4);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px}
+.rail::-webkit-scrollbar{display:none}
+.rail>*{scroll-snap-align:start}
+@media (max-width:1000px){.rail{grid-auto-columns:calc((100% - 2*16px)/3);gap:16px}}
+@media (max-width:640px){.rail{grid-auto-columns:calc((100% - 12px)/1.6);gap:12px}}
+.arrow{position:absolute;top:38%;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--bg);display:grid;place-items:center;box-shadow:0 8px 20px -10px rgba(0,0,0,.3);z-index:2}
+.arrow.l{left:-14px}.arrow.r{right:-14px}
+@media (max-width:640px){.arrow{display:none}}
+.card{background:var(--bg);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.card .img{position:relative;aspect-ratio:1/1;background:var(--surface);display:grid;place-items:center}
+.card .img svg{width:68%;height:68%;transition:transform .3s}
+.card:hover .img svg{transform:scale(1.05)}
+.save{position:absolute;top:12px;left:12px;background:var(--sale);color:#fff;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px}
+.save.new{background:var(--lime);color:var(--on-lime)}
+.card .body{padding:14px 16px;display:flex;flex-direction:column;gap:4px;flex:1}
+.swatches{display:flex;gap:6px;margin-bottom:4px}
+.swatches i{width:14px;height:14px;border-radius:50%;border:1px solid var(--line)}
+.card h3{font-family:var(--f-body);font-size:15px;font-weight:700;line-height:1.3}
+.card .sub{color:var(--muted);font-size:13px}
+.price{display:flex;align-items:baseline;gap:8px;padding-top:8px;margin-top:auto;font-variant-numeric:tabular-nums}
+.price b{font-size:18px;color:var(--sale)}
+.price b.reg{color:var(--fg)}
+.price s{color:var(--muted);font-size:13px}
+.card .add{margin:0 16px 16px;border:0;background:var(--brand);color:#fff;border-radius:999px;padding:11px;font-weight:700;font-size:14px}
+.card .add:hover{background:var(--brand-deep)}
+
+/* 6. categorías */
+.pills{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:28px}
+.pill{border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:9px 20px;font-weight:600;font-size:14px}
+.pill.on,.pill:hover{background:var(--brand);border-color:var(--brand);color:#fff}
+.view-all{display:flex;justify-content:center;margin-top:28px}
+
+/* 8. featured on */
+.press{background:var(--surface)}
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.quote{background:var(--bg);border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:14px;border:1px solid var(--line)}
+.quote .who{display:flex;gap:12px;align-items:center}
+.quote .av{width:48px;height:48px;border-radius:50%;background:var(--brand);color:var(--lime);display:grid;place-items:center;font-weight:800;font-family:var(--f-display)}
+.quote .who small{display:block;color:var(--muted)}
+.quote p{margin:0;font-size:15px}
+.pager{display:flex;justify-content:center;gap:8px;margin-top:26px}
+.pager button{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--bg);font-weight:600;font-size:13px}
+.pager button.on{background:var(--brand);border-color:var(--brand);color:#fff}
+@media (max-width:900px){.quotes{grid-template-columns:1fr}.quotes .quote:nth-child(n+2){display:none}}
+
+/* 9. reseñas con imagen */
+.shots{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.shot{border-radius:16px;overflow:hidden;background:var(--surface);border:1px solid var(--line)}
+.shot .img{position:relative;aspect-ratio:4/5;display:grid;place-items:center;background:linear-gradient(160deg,var(--brand-deep),var(--brand))}
+.shot .img svg{width:60%;height:60%}
+.shot .img .ph{background:rgba(0,0,0,.35);color:#C9D4F5;border-color:#3a4f9e}
+.shot .txt{padding:16px}
+.shot .txt b{display:block;margin-bottom:4px}
+.shot .stars{color:#F5A623;letter-spacing:2px;font-size:13px}
+.shot p{margin:6px 0 0;color:var(--muted);font-size:14px}
+@media (max-width:1000px){.shots{grid-template-columns:repeat(2,1fr)}}
+
+/* 10. blog */
+.blog{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.post .img{position:relative;aspect-ratio:16/10;border-radius:16px;overflow:hidden;display:grid;place-items:center;background:var(--surface)}
+.post .img svg{width:46%;height:auto}
+.post time{display:block;margin-top:14px;color:var(--muted);font-size:13px;font-family:var(--f-mono)}
+.post h3{font-size:19px;margin:6px 0 8px;font-weight:700}
+.post a.more{color:var(--brand);font-weight:700;font-size:14px}
+@media (max-width:900px){.blog{grid-template-columns:1fr}}
+
+/* 11. why */
+.why .rows{display:grid;gap:24px}
+.why-row{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:24px;overflow:hidden;background:var(--surface);min-height:360px}
+.why-row:nth-child(even) .img{order:2}
+.why-row .img{position:relative;display:grid;place-items:center;background:linear-gradient(140deg,var(--brand-deep),var(--brand))}
+.why-row .img svg{width:52%;height:auto}
+.why-row .img .ph{background:rgba(0,0,0,.35);color:#C9D4F5;border-color:#3a4f9e}
+.why-row .txt{padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;justify-content:center;gap:12px}
+.why-row .txt span{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+.why-row h3{font-size:clamp(24px,2.6vw,34px)}
+.why-row p{color:var(--muted);margin:0;max-width:46ch}
+.videos{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+.video{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:linear-gradient(135deg,#040A24,var(--brand-deep));display:grid;place-items:center;color:#fff}
+.video .play{width:72px;height:72px;border-radius:50%;background:var(--lime);color:var(--on-lime);display:grid;place-items:center}
+.video .cap{position:absolute;left:20px;bottom:18px;font-weight:700}
+@media (max-width:820px){.why-row{grid-template-columns:1fr}.why-row:nth-child(even) .img{order:0}.why-row .img{min-height:240px}.videos{grid-template-columns:1fr}}
+
+/* 12. newsletter */
+.news{background:var(--brand);color:#fff}
+.news .wrap{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;padding-block:56px}
+.news h2{font-size:clamp(24px,2.8vw,34px)}
+.news h2 em{font-style:normal;color:var(--lime)}
+.news p{color:#D5DEFA;margin:8px 0 0}
+.news form{display:flex;gap:8px;background:rgba(255,255,255,.14);border-radius:999px;padding:6px}
+.news input{flex:1;min-width:0;border:0;background:transparent;color:#fff;font:inherit;padding:0 16px;outline:none}
+.news input::placeholder{color:#C9D4F5}
+@media (max-width:820px){.news .wrap{grid-template-columns:1fr}}
+@media (max-width:460px){.news form{flex-direction:column;border-radius:16px}.news input{padding:10px 14px}}
+
+/* 13. footer */
+footer{background:#040A24;color:#A9B5D6}
+footer .wrap{padding-block:56px 24px}
+.fcols{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+footer h4{color:#fff;margin:0 0 14px;font-size:15px;font-family:var(--f-display)}
+footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px;font-size:14px}
+footer ul a:hover{color:var(--lime)}
+.fbar{border-top:1px solid #17224a;margin-top:40px;padding-top:22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px}
+.fbar .soc{display:flex;gap:14px}
+.fbar select{background:#0B1538;color:#fff;border:1px solid #17224a;border-radius:8px;padding:6px 10px;font:inherit}
+.pay{display:flex;gap:6px;flex-wrap:wrap}
+.pay span{font-family:var(--f-mono);font-size:11px;border:1px solid #24306a;border-radius:6px;padding:4px 8px;color:#D5DEFA}
+@media (max-width:820px){.fcols{grid-template-columns:1fr 1fr}}
+
+/* páginas internas */
+.crumbs{color:var(--muted);font-size:13px;margin-bottom:16px}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media (max-width:1000px){.cat-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:640px){.cat-grid{grid-template-columns:repeat(2,1fr);gap:12px}}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.toolbar select{padding:9px 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg);color:var(--fg);font:inherit}
+.pd{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start}
+.pd .gal{position:relative;background:var(--surface);border-radius:24px;aspect-ratio:1/1;display:grid;place-items:center}
+.pd .gal svg{width:66%;height:66%}
+.pd .thumbs{display:flex;gap:10px;margin-top:12px}
+.pd .thumbs div{width:76px;height:76px;border-radius:14px;background:var(--surface);display:grid;place-items:center;border:2px solid transparent}
+.pd .thumbs div.on{border-color:var(--brand)}
+.pd .thumbs svg{width:70%;height:70%}
+.pd h1{font-size:clamp(28px,3.4vw,42px);letter-spacing:-.02em;margin:6px 0 10px}
+.pd .lead{color:var(--muted);font-size:16px}
+.pd .price b{font-size:30px}
+.opt{margin-top:20px}
+.opt h4{margin:0 0 8px;font-size:13px;color:var(--muted)}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px}
+.qty button{border:0;background:transparent;width:38px;height:38px;font-size:18px}
+.qty span{min-width:28px;text-align:center;font-variant-numeric:tabular-nums}
+.buy{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.spec-table{width:100%;border-collapse:collapse;margin-top:28px;font-size:14px}
+.spec-table td{padding:11px 0;border-bottom:1px solid var(--line)}
+.spec-table td:first-child{color:var(--muted);width:45%}
+.note{background:var(--surface);border-radius:12px;padding:12px 14px;margin-top:16px;font-size:13px;color:var(--muted)}
+@media (max-width:820px){.pd{grid-template-columns:1fr}}
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.cbox{background:var(--surface);border-radius:20px;padding:28px;display:grid;gap:14px;align-content:start}
+.fld{display:grid;gap:6px}
+.fld label{font-size:13px;color:var(--muted)}
+.fld input,.fld textarea,.fld select{border:1px solid var(--line);background:var(--bg);color:var(--fg);border-radius:10px;padding:10px 12px;font:inherit}
+.faq details{border-bottom:1px solid var(--line);padding:14px 0}
+.faq summary{font-weight:600;cursor:pointer}
+.faq p{color:var(--muted);margin:8px 0 0}
+@media (max-width:820px){.contact{grid-template-columns:1fr}}
+
+/* carrito, toast, whatsapp, panel */
+.scrim{position:fixed;inset:0;background:rgba(4,10,36,.55);z-index:70}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,100%);background:var(--bg);z-index:71;display:flex;flex-direction:column;padding:calc(env(safe-area-inset-top,0px) + 18px) max(18px,env(safe-area-inset-right,0px)) calc(env(safe-area-inset-bottom,0px) + 18px) 18px}
+.drawer>header{display:flex;justify-content:space-between;align-items:center}
+.lines{flex:1;overflow:auto;display:grid;gap:12px;align-content:start;margin:18px 0}
+.line{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center}
+.line .th{width:64px;height:64px;border-radius:12px;background:var(--surface);display:grid;place-items:center}
+.line .th svg{width:80%;height:80%}
+.line small{color:var(--muted)}
+.tot{border-top:1px solid var(--line);padding-top:14px;display:grid;gap:10px}
+.tot .row{display:flex;justify-content:space-between;font-variant-numeric:tabular-nums}
+.empty{color:var(--muted);text-align:center;padding:40px 0}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 18px;border-radius:999px;z-index:80;font-weight:600;font-size:14px}
+.wa-float{position:fixed;right:calc(env(safe-area-inset-right,0px) + 18px);bottom:calc(env(safe-area-inset-bottom,0px) + 18px);width:56px;height:56px;border-radius:50%;background:#1FAF5A;color:#fff;display:grid;place-items:center;box-shadow:0 10px 30px rgba(31,175,90,.45);z-index:40;border:0}
+.brandpanel{position:fixed;left:calc(env(safe-area-inset-left,0px) + 16px);bottom:calc(env(safe-area-inset-bottom,0px) + 16px);z-index:75;width:min(300px,calc(100% - 32px));background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:0 20px 50px rgba(0,0,0,.25);display:grid;gap:12px;font-size:13px}
+.brandpanel h4{margin:0;font-family:var(--f-display)}
+.brandpanel .r{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.brandpanel input[type=color]{width:44px;height:30px;border:1px solid var(--line);border-radius:8px;background:none;padding:2px}
+</style>
+</head>
+<body>
+
+<div class="util"><div class="wrap">
+  <span><b>PROTOTIPO</b> · Productos, precios, fotos, reseñas y contacto son de ejemplo.</span>
+  <span style="display:flex;gap:14px;align-items:center"><span class="soc">Facebook · Instagram · TikTok · WhatsApp</span><button id="openBrand" type="button">Ajustar logo y colores</button></span>
+</div></div>
+<div class="announce"><div class="wrap">Black Friday Emart: hasta 30% de descuento en power banks y cargadores<a href="#ofertas">Comprar ahora</a></div></div>
+
+<header class="top">
+  <div class="wrap">
+    <div style="display:flex;align-items:center">
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Abrir menú" type="button"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      <nav class="main" id="nav"></nav>
+    </div>
+    <a class="logo" href="#inicio"><span class="mark" id="logoMark">e</span><span><span class="e">e</span>mart</span></a>
+    <div class="tools">
+      <button class="icon-btn" id="searchBtn" aria-label="Buscar" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></button>
+      <button class="icon-btn" aria-label="Mi cuenta" type="button" id="accBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></button>
+      <button class="icon-btn" id="cartBtn" aria-label="Abrir carrito" type="button"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 7h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z"/><path d="M9 7a3 3 0 0 1 6 0"/></svg><span class="badge" id="cartCount" hidden>0</span></button>
+    </div>
+  </div>
+  <div class="searchbar" id="searchbar" hidden><div class="wrap"><input id="q" placeholder="Buscar power banks, cargadores, audífonos…" aria-label="Buscar productos"></div></div>
+</header>
+
+<main id="view"></main>
+
+<section class="news"><div class="wrap">
+  <div><h2>Suscríbete y obtén <em>5% de descuento</em> en tu primera compra</h2><p>Entérate primero de lanzamientos, ofertas y novedades de Emart.</p></div>
+  <form id="nl"><input id="nlIn" aria-label="Correo o WhatsApp" placeholder="Tu correo o WhatsApp"><button class="btn" type="submit">Suscribirme</button></form>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="fcols">
+    <div><h4>Productos</h4><ul><li><a href="#catalogo-carga">Power banks</a></li><li><a href="#catalogo-cargadores">Cargadores</a></li><li><a href="#catalogo-cables">Cables</a></li><li><a href="#catalogo-audio">Audio</a></li><li><a href="#catalogo-accesorios">Accesorios</a></li></ul></div>
+    <div><h4>Sobre Emart</h4><ul><li><a href="#inicio">Quiénes somos</a></li><li><a href="#inicio">Blog</a></li><li><a href="#contacto">Ventas por mayor</a></li><li><a href="#contacto">Trabaja con nosotros</a></li></ul></div>
+    <div><h4>Soporte</h4><ul><li><a href="#contacto">Contacto</a></li><li><a href="#contacto">Rastrear pedido</a></li><li><a href="#contacto">Garantía</a></li><li><a href="#contacto">Preguntas frecuentes</a></li></ul></div>
+    <div><h4>Políticas y términos</h4><ul><li><a href="#contacto">Envíos</a></li><li><a href="#contacto">Cambios y devoluciones</a></li><li><a href="#contacto">Privacidad</a></li><li><a href="#contacto">Términos de servicio</a></li></ul></div>
+  </div>
+  <div class="fbar">
+    <span class="soc"><a href="https://www.facebook.com/p/Emartbo-61580931591963/" target="_blank" rel="noopener">Facebook</a><span>Instagram</span><span>TikTok</span><span>WhatsApp</span></span>
+    <select aria-label="País y moneda" id="cur"><option>Bolivia (BOB Bs)</option></select>
+    <div class="pay"><span>QR Simple</span><span>Transferencia</span><span>Tigo Money</span><span>Visa</span><span>Mastercard</span><span>Efectivo</span></div>
+  </div>
+  <div class="fbar" style="border:0;margin-top:8px;padding-top:0"><span>© 2026 Emart. Todos los derechos reservados.</span></div>
+</div></footer>
+
+<button class="wa-float" id="waFloat" aria-label="Escribir por WhatsApp" type="button"><svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm4.5 12.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3z"/></svg></button>
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden aria-label="Carrito">
+  <header><h3 style="font-size:20px">Tu carrito</h3><button class="icon-btn" id="closeCart" aria-label="Cerrar carrito" type="button"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6 6 18"/></svg></button></header>
+  <div class="lines" id="lines"></div><div class="tot" id="tot"></div>
+</aside>
+<div class="brandpanel" id="brandPanel" hidden>
+  <div class="r"><h4>Identidad de Emart</h4><button class="icon-btn" id="closeBrand" aria-label="Cerrar panel" type="button" style="width:30px;height:30px">✕</button></div>
+  <div class="r"><span>Azul</span><input type="color" id="c1" value="#0b3bd1"></div>
+  <div class="r"><span>Azul oscuro</span><input type="color" id="c3" value="#061f73"></div>
+  <div class="r"><span>Verde lima</span><input type="color" id="c2" value="#b8f13a"></div>
+  <div class="fld"><label for="logoFile">Logo (PNG/SVG)</label><input type="file" id="logoFile" accept="image/*"></div>
+  <button class="btn line" id="resetBrand" type="button" style="padding:8px">Restablecer</button>
+</div>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+(function(){
+const fmt=n=>"Bs "+n.toLocaleString("es-BO");
+function art(type, col){
+  const c = col || "var(--brand)"; const gid = "g"+(art.n=(art.n||0)+1);
+  const base = 'xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" aria-hidden="true"';
+  switch(type){
+    case "powerbank": return `<svg ${base}><defs><linearGradient id="${gid}" x1="0" x2="1"><stop offset="0" stop-color="#2a3446"/><stop offset="1" stop-color="#121926"/></linearGradient></defs><rect x="52" y="22" width="96" height="156" rx="22" fill="url(#${gid})"/><rect x="52" y="22" width="96" height="156" rx="22" fill="none" stroke="${c}" stroke-opacity=".7" stroke-width="2"/><rect x="66" y="40" width="68" height="40" rx="8" fill="#05080e"/><text x="100" y="67" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="20" fill="${c}">100%</text><rect x="66" y="92" width="68" height="4" rx="2" fill="#2f3b52"/><rect x="66" y="92" width="52" height="4" rx="2" fill="${c}"/><rect x="84" y="160" width="32" height="7" rx="3.5" fill="#05080e"/><circle cx="100" cy="128" r="12" fill="none" stroke="#3a475c" stroke-width="2"/></svg>`;
+    case "charger": return `<svg ${base}><rect x="40" y="56" width="120" height="110" rx="24" fill="#EEF2F7" stroke="#c9d2de" stroke-width="2"/><rect x="40" y="56" width="120" height="24" rx="12" fill="${c}" opacity=".9"/><rect x="74" y="26" width="10" height="32" rx="3" fill="#9aa6b8"/><rect x="116" y="26" width="10" height="32" rx="3" fill="#9aa6b8"/><rect x="66" y="104" width="30" height="10" rx="4" fill="#0e1726"/><rect x="104" y="104" width="30" height="10" rx="4" fill="#0e1726"/><rect x="85" y="128" width="30" height="10" rx="3" fill="#0e1726"/><text x="100" y="156" text-anchor="middle" font-family="Sora,sans-serif" font-weight="700" font-size="12" fill="#5b6678">65W GaN</text></svg>`;
+    case "cable": return `<svg ${base}><path d="M40 160 C 40 60, 160 160, 160 50" fill="none" stroke="${c}" stroke-width="10" stroke-linecap="round"/><path d="M40 160 C 40 60, 160 160, 160 50" fill="none" stroke="#fff" stroke-opacity=".25" stroke-width="3" stroke-linecap="round"/><rect x="28" y="150" width="24" height="40" rx="6" fill="#1b2433"/><rect x="34" y="184" width="12" height="12" rx="3" fill="#9aa6b8"/><rect x="148" y="14" width="24" height="40" rx="6" fill="#1b2433"/><rect x="154" y="6" width="12" height="12" rx="3" fill="#9aa6b8"/></svg>`;
+    case "earbuds": return `<svg ${base}><rect x="44" y="70" width="112" height="88" rx="40" fill="#F7F9FC" stroke="#cdd5e1" stroke-width="2"/><path d="M44 104h112" stroke="#cdd5e1" stroke-width="2"/><circle cx="100" cy="138" r="3" fill="${c}"/><g transform="translate(70 30) rotate(-15)"><ellipse cx="0" cy="0" rx="16" ry="18" fill="#fff" stroke="#cdd5e1" stroke-width="2"/><rect x="-5" y="10" width="10" height="34" rx="5" fill="#fff" stroke="#cdd5e1" stroke-width="2"/></g><g transform="translate(132 30) rotate(15)"><ellipse cx="0" cy="0" rx="16" ry="18" fill="#fff" stroke="#cdd5e1" stroke-width="2"/><rect x="-5" y="10" width="10" height="34" rx="5" fill="#fff" stroke="#cdd5e1" stroke-width="2"/></g></svg>`;
+    case "watch": return `<svg ${base}><rect x="72" y="10" width="56" height="44" rx="10" fill="#2a3446"/><rect x="72" y="146" width="56" height="44" rx="10" fill="#2a3446"/><rect x="52" y="44" width="96" height="112" rx="28" fill="#121926" stroke="#3a475c" stroke-width="3"/><rect x="62" y="54" width="76" height="92" rx="20" fill="#05080e"/><circle cx="100" cy="100" r="28" fill="none" stroke="#1d2738" stroke-width="7"/><path d="M100 72 a28 28 0 0 1 26 38" fill="none" stroke="${c}" stroke-width="7" stroke-linecap="round"/><text x="100" y="106" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="16" fill="#fff">10:24</text><rect x="148" y="86" width="6" height="18" rx="3" fill="#3a475c"/></svg>`;
+    case "speaker": return `<svg ${base}><rect x="30" y="58" width="140" height="88" rx="44" fill="#1b2433"/><rect x="30" y="58" width="140" height="88" rx="44" fill="none" stroke="${c}" stroke-opacity=".6" stroke-width="2"/><g fill="#2c374a">${Array.from({length:7},(_,i)=>Array.from({length:3},(_,j)=>`<circle cx="${64+i*12}" cy="${88+j*14}" r="3"/>`).join("")).join("")}</g><circle cx="148" cy="102" r="10" fill="${c}"/><rect x="58" y="146" width="84" height="8" rx="4" fill="#0e1726" opacity=".4"/></svg>`;
+    case "holder": return `<svg ${base}><rect x="64" y="160" width="72" height="16" rx="8" fill="#9aa6b8"/><rect x="94" y="110" width="12" height="54" rx="6" fill="#b8c2d0"/><rect x="58" y="26" width="84" height="100" rx="14" fill="#121926" transform="rotate(-8 100 76)"/><rect x="64" y="34" width="72" height="84" rx="10" fill="${c}" opacity=".85" transform="rotate(-8 100 76)"/><circle cx="100" cy="118" r="10" fill="#cdd5e1"/></svg>`;
+    case "magsafe": return `<svg ${base}><circle cx="100" cy="100" r="70" fill="#F7F9FC" stroke="#cdd5e1" stroke-width="2"/><circle cx="100" cy="100" r="44" fill="none" stroke="${c}" stroke-width="6"/><circle cx="100" cy="100" r="6" fill="${c}"/><path d="M100 170 v24" stroke="#cdd5e1" stroke-width="8" stroke-linecap="round"/></svg>`;
+  }
+}
+
+
+const CATS=[{id:"carga",name:"Power banks",icon:"powerbank"},{id:"cargadores",name:"Cargadores",icon:"charger"},{id:"cables",name:"Cables",icon:"cable"},{id:"audio",name:"Audio",icon:"earbuds"},{id:"wearables",name:"Smartwatch",icon:"watch"},{id:"accesorios",name:"Accesorios",icon:"holder"}];
+const L="var(--lime)",B="var(--brand)";
+const P=[
+ {id:"pb20",cat:"carga",type:"powerbank",name:"Power Bank 20.000 mAh Pro",sub:"Pantalla digital, 65W USB-C PD",price:289,old:349,col:L,cols:["#121926","#e9eef6","#B8F13A"],specs:{"Capacidad":"20.000 mAh","Potencia":"65 W máx.","Puertos":"2× USB-C, 1× USB-A","Peso":"380 g"}},
+ {id:"gan65",cat:"cargadores",type:"charger",name:"Cargador GaN 65W 3 puertos",sub:"Laptop y celular a la vez",price:219,old:259,col:B,cols:["#f4f6fa","#121926"],specs:{"Potencia":"65 W","Tecnología":"GaN","Puertos":"2× USB-C, 1× USB-A"}},
+ {id:"tws",cat:"audio",type:"earbuds",name:"Audífonos inalámbricos ANC",sub:"Cancelación de ruido, 30 h",price:259,old:319,col:B,cols:["#f4f6fa","#121926"],specs:{"Bluetooth":"5.3","Batería":"30 h con estuche","Cancelación":"Activa (ANC)"}},
+ {id:"sw",cat:"wearables",type:"watch",name:"Smartwatch deportivo",sub:"AMOLED, ritmo cardíaco, 7 días",price:299,old:369,col:L,cols:["#121926","#e9eef6"],specs:{"Pantalla":"1,8\" AMOLED","Batería":"Hasta 7 días","Sensores":"Ritmo cardíaco, SpO2"}},
+ {id:"mag15",cat:"cargadores",type:"magsafe",name:"Cargador magnético 15W",sub:"Inalámbrico, compatible MagSafe",price:129,col:B,cols:["#f4f6fa","#121926"],isNew:1,specs:{"Potencia":"15 W","Tipo":"Inalámbrico magnético"}},
+ {id:"pb10",cat:"carga",type:"powerbank",name:"Power Bank 10.000 mAh Slim",sub:"Compacto, 22.5W",price:149,col:B,cols:["#121926","#0B3BD1"],specs:{"Capacidad":"10.000 mAh","Potencia":"22,5 W"}},
+ {id:"pbmag",cat:"carga",type:"powerbank",name:"Power Bank magnético 5.000 mAh",sub:"Se pega a tu iPhone",price:179,old:209,col:L,cols:["#e9eef6","#B8F13A"],specs:{"Capacidad":"5.000 mAh","Carga":"Magnética 15 W"}},
+ {id:"gan20",cat:"cargadores",type:"charger",name:"Cargador rápido 20W USB-C",sub:"Para iPhone y Android",price:79,col:L,cols:["#f4f6fa"],specs:{"Potencia":"20 W","Puerto":"USB-C PD"}},
+ {id:"cc100",cat:"cables",type:"cable",name:"Cable USB-C a USB-C 100W",sub:"Trenzado, 1,5 m",price:59,old:75,col:B,cols:["#121926","#0B3BD1"],specs:{"Potencia":"100 W","Largo":"1,5 m"}},
+ {id:"cl",cat:"cables",type:"cable",name:"Cable USB-C a Lightning",sub:"Carga rápida, 1 m",price:49,col:L,cols:["#f4f6fa"],specs:{"Largo":"1 m"}},
+ {id:"spk",cat:"audio",type:"speaker",name:"Parlante Bluetooth portátil",sub:"Resistente al agua, 12 h",price:199,col:L,cols:["#121926","#B8F13A"],isNew:1,specs:{"Potencia":"10 W","Batería":"12 h","Resistencia":"IPX6"}},
+ {id:"hold",cat:"accesorios",type:"holder",name:"Soporte de celular para auto",sub:"Magnético, rejilla",price:69,col:B,cols:["#121926"],specs:{"Montaje":"Rejilla","Rotación":"360°"}}
+];
+const MENU=[
+ {t:"Black Friday",h:"#ofertas",f:["Ofertas de la semana","Combos","Liquidación"],p:P.filter(p=>p.old).slice(0,4)},
+ {t:"Power Banks",h:"#catalogo-carga",f:["Por capacidad","Magnéticos","Para laptop","Con pantalla"],p:P.filter(p=>p.cat==="carga")},
+ {t:"Cargadores",h:"#catalogo-cargadores",f:["GaN","Inalámbricos","Por potencia"],p:P.filter(p=>p.cat==="cargadores")},
+ {t:"Cables",h:"#catalogo-cables",f:["USB-C","Lightning","Por largo"],p:P.filter(p=>p.cat==="cables")},
+ {t:"Audio y más",h:"#catalogo-audio",f:["Audífonos","Parlantes","Smartwatch","Accesorios"],p:P.filter(p=>["audio","wearables","accesorios"].includes(p.cat)).slice(0,4)},
+ {t:"Soporte",h:"#contacto",f:["Contacto","Garantía","Rastrear pedido"],p:[]}
+];
+document.getElementById("nav").innerHTML=MENU.map(m=>`<div><a href="${m.h}">${m.t}</a>${m.p.length?`<div class="mega"><div><h4>Explorar</h4><ul>${m.f.map(x=>`<li><a href="${m.h}">${x}</a></li>`).join("")}</ul></div><div class="prods">${m.p.map(p=>`<a href="#producto-${p.id}"><span class="th">${art(p.type,p.col)}</span><span><b>${p.name}</b><small>${p.sub}</small></span></a>`).join("")}</div></div>`:""}</div>`).join("");
+
+let cart=[];try{cart=JSON.parse(localStorage.getItem("em-cart")||"[]")}catch(e){}
+const save=()=>{try{localStorage.setItem("em-cart",JSON.stringify(cart))}catch(e){}renderCart()};
+function add(id,q=1){const l=cart.find(x=>x.id===id);l?l.q+=q:cart.push({id,q});save();toast("Agregado al carrito")}
+function toast(t){const el=document.getElementById("toast");el.textContent=t;el.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>el.hidden=true,1800)}
+function renderCart(){
+ const n=cart.reduce((a,b)=>a+b.q,0),b=document.getElementById("cartCount");b.textContent=n;b.hidden=!n;
+ const Ls=document.getElementById("lines"),T=document.getElementById("tot");
+ if(!cart.length){Ls.innerHTML='<div class="empty">Tu carrito está vacío.</div>';T.innerHTML='<a class="btn blue" href="#catalogo" data-close>Ver productos</a>';return}
+ let s=0;Ls.innerHTML=cart.map(l=>{const p=P.find(x=>x.id===l.id);s+=p.price*l.q;return `<div class="line"><div class="th">${art(p.type,p.col)}</div><div><b style="font-size:14px">${p.name}</b><br><small>${fmt(p.price)}</small> <span class="qty" style="margin-left:4px"><button data-dec="${p.id}" aria-label="Quitar uno" type="button">−</button><span>${l.q}</span><button data-inc="${p.id}" aria-label="Agregar uno" type="button">+</button></span></div><b>${fmt(p.price*l.q)}</b></div>`}).join("");
+ T.innerHTML=`<div class="row"><span>Subtotal</span><b>${fmt(s)}</b></div><div class="row" style="color:var(--muted);font-size:13px"><span>Envío</span><span>${s>=300?"Gratis":"Se calcula al confirmar"}</span></div><button class="btn" id="checkoutWa" type="button">Finalizar pedido por WhatsApp</button>`;
+}
+const pct=p=>Math.round((1-p.price/p.old)*100);
+const card=p=>`<article class="card"><a class="img" href="#producto-${p.id}">${p.old?`<span class="save">Ahorra ${pct(p)}%</span>`:p.isNew?`<span class="save new">Nuevo</span>`:""}${art(p.type,p.col)}<span class="ph">Foto</span></a><div class="body"><div class="swatches">${p.cols.map(c=>`<i style="background:${c}"></i>`).join("")}</div><a href="#producto-${p.id}"><h3>${p.name}</h3></a><span class="sub">${p.sub}</span><div class="price">${p.old?`<b>${fmt(p.price)}</b><s>${fmt(p.old)}</s>`:`<b class="reg">${fmt(p.price)}</b>`}</div></div><button class="add" data-add="${p.id}" type="button">${p.cols.length>1?"Elegir opciones":"Agregar al carrito"}</button></article>`;
+const rail=(id,items)=>`<div class="rail-wrap"><button class="arrow l" data-rail="${id}" data-dir="-1" aria-label="Anterior" type="button">‹</button><div class="rail" id="${id}">${items.map(card).join("")}</div><button class="arrow r" data-rail="${id}" data-dir="1" aria-label="Siguiente" type="button">›</button></div>`;
+
+const SLIDES=[
+ {c:"s1",tag:"Black Friday",h:"Hasta <em>30% off</em> en carga rápida",p:"Power banks, cargadores GaN y cables con los mejores precios del año. Solo por tiempo limitado.",cta:"Comprar ahora",href:"#ofertas",a:art("powerbank",L)},
+ {c:"s2",tag:"Nuevo lanzamiento",h:"Carga magnética, <em>sin cables</em>",p:"Pega, carga y sigue. El nuevo cargador magnético de 15W para tu iPhone.",cta:"Conocer más",href:"#producto-mag15",a:art("magsafe",L)},
+ {c:"s3",tag:"Serie Audio",h:"Tu música, <em>sin ruido</em>",p:"Audífonos con cancelación activa de ruido y 30 horas de batería.",cta:"Conocer más",href:"#producto-tws",a:art("earbuds",B)},
+ {c:"s4",tag:"Serie Wearables",h:"Tu día, <em>en tu muñeca</em>",p:"Smartwatch con pantalla AMOLED, ritmo cardíaco y hasta 7 días de batería.",cta:"Conocer más",href:"#producto-sw",a:art("watch",L)}
+];
+function home(){
+ return `<section class="hero"><div class="slides">${SLIDES.map((s,i)=>`<div class="slide ${s.c} ${i?"":"on"}"><div class="bg"></div><div class="wrap"><div><span class="tagline">${s.tag}</span><h2>${s.h}</h2><p>${s.p}</p><a class="btn" href="${s.href}">${s.cta}</a></div><div class="art">${s.a}<span class="ph">Imagen de banner</span></div></div></div>`).join("")}</div>
+  <div class="hero-ctrl">${SLIDES.map((_,i)=>`<button class="dot ${i?"":"on"}" data-slide="${i}" aria-label="Diapositiva ${i+1}" type="button"></button>`).join("")}<button class="pp" id="pp" aria-label="Pausar" type="button">❚❚</button></div></section>
+
+ <section class="sec"><div class="wrap"><h2 class="sec-title">Top Picks</h2>${rail("r1",P.filter(p=>p.old).concat(P.filter(p=>p.isNew)))}</div></section>
+
+ <section class="sec" style="padding-top:0"><div class="wrap"><h2 class="sec-title">Compra por categoría</h2>
+  <div class="pills" id="homeCats">${CATS.map((c,i)=>`<button class="pill ${i?"":"on"}" data-hc="${c.id}" type="button">${c.name}</button>`).join("")}</div>
+  <div id="homeCatRail">${rail("r2",P.filter(p=>p.cat==="carga"))}</div>
+  <div class="view-all"><a class="btn line" id="viewAll" href="#catalogo-carga">Ver todo</a></div></div></section>
+
+ <section class="sec press"><div class="wrap"><h2 class="sec-title">Lo que dicen de nosotros</h2>
+  <div class="quotes" id="quotes"></div>
+  <div class="pager" id="pager">${[1,2,3,4].map(n=>`<button class="${n===1?"on":""}" data-q="${n-1}" type="button">${n}</button>`).join("")}</div></div></section>
+
+ <section class="sec"><div class="wrap"><h2 class="sec-title">Reseñas de clientes</h2><div class="shots">
+  ${[["tws","Audífonos ANC","La cancelación de ruido es increíble por el precio."],["pb20","Power Bank Pro","Carga mi laptop y mi celular a la vez."],["sw","Smartwatch","La batería dura toda la semana."],["gan65","Cargador GaN 65W","Reemplacé tres cargadores con uno solo."]].map(([id,t,q])=>{const p=P.find(x=>x.id===id);return `<div class="shot"><div class="img">${art(p.type,L)}<span class="ph">Foto del cliente</span></div><div class="txt"><span class="stars">★★★★★</span><b>${t}</b><p>"${q}" (reseña de ejemplo)</p></div></div>`}).join("")}
+ </div></div></section>
+
+ <section class="sec" style="padding-top:0"><div class="wrap"><h2 class="sec-title">Blog</h2><div class="blog">
+  ${[["powerbank","12 nov 2026","¿Cuántos mAh necesitas en un power bank?"],["charger","5 nov 2026","Cargadores GaN: qué son y por qué son mejores"],["earbuds","28 oct 2026","Cómo elegir audífonos con cancelación de ruido"]].map(([i,d,t])=>`<article class="post"><div class="img">${art(i,B)}<span class="ph">Imagen del artículo</span></div><time>${d}</time><h3>${t}</h3><a class="more" href="#inicio">Leer más →</a></article>`).join("")}
+ </div><div class="view-all"><a class="btn line" href="#inicio">Ver todos</a></div></div></section>
+
+ <section class="sec why" style="padding-top:0"><div class="wrap"><h2 class="sec-title">¿Por qué Emart?</h2><div class="rows">
+  ${[["Rendimiento","Carga más rápida, menos espera","Potencias de hasta 100W y tecnología GaN para cargar celulares y laptops en minutos.","charger"],["Diseño","Tecnología que se ve bien","Gadgets compactos, con materiales premium y acabados que combinan con tu estilo.","powerbank"],["Fácil de usar","Compatible con lo que ya tienes","Te asesoramos por WhatsApp para elegir el accesorio correcto para tu equipo.","magsafe"],["Calidad","Productos probados y con garantía","Cada producto pasa por control de calidad antes de llegar a tus manos.","watch"]].map(([k,h,p,i])=>`<div class="why-row"><div class="img">${art(i,L)}<span class="ph">Foto de producto</span></div><div class="txt"><span>${k}</span><h3>${h}</h3><p>${p}</p></div></div>`).join("")}
+ </div>
+ <div class="videos"><div class="video"><span class="play">▶</span><span class="cap">Video: unboxing Power Bank Pro</span><span class="ph" style="background:rgba(0,0,0,.4);color:#C9D4F5">Video del cliente</span></div><div class="video"><span class="play">▶</span><span class="cap">Video: cómo elegir tu cargador</span><span class="ph" style="background:rgba(0,0,0,.4);color:#C9D4F5">Video del cliente</span></div></div>
+ <div class="view-all"><a class="btn blue" href="#contacto">Conoce más sobre Emart</a></div></div></section>`;
+}
+const QUOTES=[["TB","TecnoBolivia","Medio de ejemplo","Emart trae gadgets de carga rápida a precios accesibles."],["GA","Gadget Andino","Creador de contenido de ejemplo","El power bank con pantalla es de lo mejor que probé este año."],["RV","Reviews Bolivia","Canal de ejemplo","Muy buena atención y entregas rápidas en la ciudad."],["CL","Ciudad Tech","Blog de ejemplo","Una tienda especializada en accesorios que realmente asesora."],["MP","Mundo Pixel","Medio de ejemplo","El cargador GaN reemplaza a todos tus cargadores."],["TT","TechTok BO","Creador de ejemplo","Los audífonos ANC sorprenden por su precio."]];
+function renderQuotes(i){const q=document.getElementById("quotes");if(!q)return;q.innerHTML=[0,1,2].map(k=>QUOTES[(i+k)%QUOTES.length]).map(([a,n,s,t])=>`<div class="quote"><div class="who"><span class="av">${a}</span><span><b>${n}</b><small>${s}</small></span></div><p>"${t}"</p></div>`).join("");document.querySelectorAll("#pager button").forEach((b,k)=>b.classList.toggle("on",k===i))}
+
+function catalog(cat,offers){
+ const list=P.filter(p=>(!cat||p.cat===cat)&&(!offers||p.old));
+ const title=offers?"Black Friday":cat?CATS.find(c=>c.id===cat).name:"Todos los productos";
+ return `<section class="sec"><div class="wrap"><div class="crumbs"><a href="#inicio">Inicio</a> / ${title}</div><h1 class="sec-title" style="text-align:left">${title}</h1>
+ <div class="pills" style="justify-content:flex-start"><a class="pill ${!cat&&!offers?"on":""}" href="#catalogo">Todo</a>${CATS.map(c=>`<a class="pill ${cat===c.id?"on":""}" href="#catalogo-${c.id}">${c.name}</a>`).join("")}<a class="pill ${offers?"on":""}" href="#ofertas">Ofertas</a></div>
+ <div class="toolbar"><span style="color:var(--muted)" id="cnt">${list.length} productos</span><select id="sort" aria-label="Ordenar"><option value="">Destacados</option><option value="a">Precio: menor a mayor</option><option value="d">Precio: mayor a menor</option></select></div>
+ <div class="cat-grid" id="cgrid">${list.map(card).join("")}</div></div></section>`;
+}
+function product(id){
+ const p=P.find(x=>x.id===id);if(!p)return catalog();
+ const rel=P.filter(x=>x.id!==p.id&&x.cat===p.cat).concat(P.filter(x=>x.cat!==p.cat)).slice(0,8);
+ return `<section class="sec"><div class="wrap"><div class="crumbs"><a href="#inicio">Inicio</a> / <a href="#catalogo-${p.cat}">${CATS.find(c=>c.id===p.cat).name}</a> / ${p.name}</div>
+ <div class="pd"><div><div class="gal">${p.old?`<span class="save">Ahorra ${pct(p)}%</span>`:""}${art(p.type,p.col)}<span class="ph">Foto principal</span></div><div class="thumbs"><div class="on">${art(p.type,p.col)}</div><div>${art(p.type,B)}</div><div>${art(p.type,"#9aa6b8")}</div></div></div>
+ <div><h1>${p.name}</h1><p class="lead">${p.sub}. Descripción de ejemplo: accesorio pensado para el uso diario, resistente y compatible con la mayoría de celulares y laptops actuales.</p>
+ <div class="price">${p.old?`<b>${fmt(p.price)}</b><s>${fmt(p.old)}</s>`:`<b class="reg">${fmt(p.price)}</b>`}</div>
+ <div class="opt"><h4>Color</h4><div class="swatches">${p.cols.map((c,i)=>`<i style="background:${c};width:30px;height:30px;${i?"":"box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--brand)"}"></i>`).join("")}</div></div>
+ <div class="opt"><h4>Cantidad</h4><span class="qty"><button id="qm" aria-label="Menos" type="button">−</button><span id="qv">1</span><button id="qp" aria-label="Más" type="button">+</button></span></div>
+ <div class="buy"><button class="btn blue" id="addPd" data-id="${p.id}" type="button">Agregar al carrito</button><button class="btn" id="askWa" type="button">Comprar por WhatsApp</button></div>
+ <div class="note">Envío en el día en tu ciudad y envíos nacionales. Garantía de ejemplo: 6 meses.</div>
+ <table class="spec-table"><tbody>${Object.entries(p.specs).map(([k,v])=>`<tr><td>${k}</td><td>${v}</td></tr>`).join("")}</tbody></table></div></div></div></section>
+ <section class="sec" style="padding-top:0"><div class="wrap"><h2 class="sec-title">También te puede interesar</h2>${rail("r3",rel)}</div></section>`;
+}
+function contact(){
+ return `<section class="sec"><div class="wrap"><div class="crumbs"><a href="#inicio">Inicio</a> / Soporte</div><h1 class="sec-title" style="text-align:left">Soporte y contacto</h1>
+ <div class="contact"><div class="cbox"><b>WhatsApp</b><span style="font-family:var(--f-mono)">+591 7XXXXXXX (ejemplo)</span><b>Dirección</b><span>Por confirmar con el cliente, Bolivia</span><b>Horario</b><span>Lun a Sáb, 9:00 a 19:00 (ejemplo)</span></div>
+ <form class="cbox" id="cform"><div class="fld"><label for="cn">Nombre</label><input id="cn"></div><div class="fld"><label for="cp">WhatsApp o correo</label><input id="cp"></div><div class="fld"><label for="cm">Mensaje</label><textarea id="cm" rows="4"></textarea></div><button class="btn blue" type="submit" style="justify-self:start">Enviar</button></form></div>
+ <div class="faq" style="margin-top:40px;max-width:760px"><h2 style="font-size:26px">Preguntas frecuentes</h2>
+ <details open><summary>¿Hacen envíos a todo el país?</summary><p>Ejemplo: entregas en el día en la ciudad y envíos nacionales en 24 a 72 horas.</p></details>
+ <details><summary>¿Qué métodos de pago aceptan?</summary><p>Ejemplo: QR, transferencia, Tigo Money, tarjeta y efectivo contra entrega.</p></details>
+ <details><summary>¿Los productos tienen garantía?</summary><p>Ejemplo: garantía por defectos de fábrica; el plazo lo define la tienda.</p></details></div></div></section>`;
+}
+
+const view=document.getElementById("view");let timer,paused=false,cur=0,qi=0;
+function go(i){const s=document.querySelectorAll(".slide");if(!s.length)return;cur=(i+s.length)%s.length;s.forEach((e,k)=>e.classList.toggle("on",k===cur));document.querySelectorAll(".dot").forEach((e,k)=>e.classList.toggle("on",k===cur))}
+function route(){
+ const h=(location.hash||"#inicio").slice(1);
+ view.innerHTML=h.startsWith("producto-")?product(h.slice(9)):h.startsWith("catalogo")?catalog(h.split("-")[1]||""):h==="ofertas"?catalog("",true):h==="contacto"?contact():home();
+ document.getElementById("nav").classList.remove("open");renderQuotes(qi=0);cur=0;window.scrollTo(0,0);
+ const qv=document.getElementById("q").value.trim().toLowerCase();if(qv&&document.getElementById("cgrid"))filterSearch(qv);
+}
+function filterSearch(q){const g=document.getElementById("cgrid");const l=P.filter(p=>(p.name+p.sub).toLowerCase().includes(q));g.innerHTML=l.length?l.map(card).join(""):'<div class="empty" style="grid-column:1/-1">Sin resultados.</div>';document.getElementById("cnt").textContent=l.length+" productos"}
+window.addEventListener("hashchange",route);
+timer=setInterval(()=>{if(!paused&&!document.hidden)go(cur+1)},5500);
+
+document.addEventListener("click",e=>{
+ const t=e.target.closest("button,a");if(!t)return;
+ if(t.dataset.add)add(t.dataset.add);
+ if(t.dataset.inc){cart.find(x=>x.id===t.dataset.inc).q++;save()}
+ if(t.dataset.dec){const l=cart.find(x=>x.id===t.dataset.dec);l.q--;if(l.q<1)cart=cart.filter(x=>x!==l);save()}
+ if(t.dataset.slide)go(+t.dataset.slide);
+ if(t.id==="pp"){paused=!paused;t.textContent=paused?"▶":"❚❚";t.setAttribute("aria-label",paused?"Reproducir":"Pausar")}
+ if(t.dataset.rail){const r=document.getElementById(t.dataset.rail);r.scrollBy({left:+t.dataset.dir*r.clientWidth*.75,behavior:"smooth"})}
+ if(t.dataset.hc){document.querySelectorAll("#homeCats .pill").forEach(b=>b.classList.toggle("on",b===t));document.getElementById("homeCatRail").innerHTML=rail("r2",P.filter(p=>p.cat===t.dataset.hc));document.getElementById("viewAll").href="#catalogo-"+t.dataset.hc}
+ if(t.dataset.q){renderQuotes(+t.dataset.q)}
+ if(t.id==="addPd")add(t.dataset.id,+document.getElementById("qv").textContent);
+ if(t.id==="qm"||t.id==="qp"){const v=document.getElementById("qv");v.textContent=Math.max(1,+v.textContent+(t.id==="qp"?1:-1))}
+ if(["askWa","checkoutWa","waFloat"].includes(t.id))toast("En el sitio real, esto abre el WhatsApp de Emart");
+ if(t.id==="accBtn")toast("Inicio de sesión de clientes (opcional)");
+ if(t.id==="searchBtn"){const s=document.getElementById("searchbar");s.hidden=!s.hidden;if(!s.hidden)document.getElementById("q").focus()}
+ if(t.hasAttribute("data-close"))closeCart();
+});
+document.addEventListener("input",e=>{
+ if(e.target.id==="q"){if(!document.getElementById("cgrid"))location.hash="#catalogo";else filterSearch(e.target.value.trim().toLowerCase())}
+ if(e.target.id==="sort"){const g=document.getElementById("cgrid");const cards=[...g.children];const v=e.target.value;const price=c=>+c.querySelector(".price b").textContent.replace(/\D/g,"");if(v)cards.sort((a,b)=>v==="a"?price(a)-price(b):price(b)-price(a));g.append(...cards)}
+});
+document.addEventListener("submit",e=>{e.preventDefault();toast(e.target.id==="nl"?"¡Listo! Tu cupón de 5% llegará pronto":"Mensaje enviado (demostración)");e.target.reset()});
+document.getElementById("menuBtn").onclick=()=>document.getElementById("nav").classList.toggle("open");
+const drawer=document.getElementById("drawer"),scrim=document.getElementById("scrim");
+document.getElementById("cartBtn").onclick=()=>{drawer.hidden=false;scrim.hidden=false};
+function closeCart(){drawer.hidden=true;scrim.hidden=true}
+document.getElementById("closeCart").onclick=closeCart;scrim.onclick=closeCart;
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeCart()});
+
+const root=document.documentElement,bp=document.getElementById("brandPanel");let brand={};
+document.getElementById("openBrand").onclick=()=>bp.hidden=!bp.hidden;document.getElementById("closeBrand").onclick=()=>bp.hidden=true;
+function apply(){if(brand.c1)root.style.setProperty("--brand",brand.c1);if(brand.c2)root.style.setProperty("--lime",brand.c2);if(brand.c3)root.style.setProperty("--brand-deep",brand.c3);["c1","c2","c3"].forEach(k=>{if(brand[k])document.getElementById(k).value=brand[k]});if(brand.logo)document.getElementById("logoMark").innerHTML=`<img src="${brand.logo}" alt="Logo Emart">`}
+function store(){try{localStorage.setItem("em-brand",JSON.stringify(brand))}catch(e){}}
+["c1","c2","c3"].forEach(k=>document.getElementById(k).oninput=e=>{brand[k]=e.target.value;apply();store()});
+document.getElementById("logoFile").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{brand.logo=r.result;apply();if(r.result.length<400000)store()};r.readAsDataURL(f)};
+document.getElementById("resetBrand").onclick=()=>{brand={};try{localStorage.removeItem("em-brand")}catch(e){}root.removeAttribute("style");document.getElementById("logoMark").textContent="e";document.getElementById("c1").value="#0b3bd1";document.getElementById("c2").value="#b8f13a";document.getElementById("c3").value="#061f73"};
+try{brand=JSON.parse(localStorage.getItem("em-brand")||"{}")}catch(e){brand={}}apply();
+
+route();renderCart();
+})();
+</script>
+</body>
+</html>
